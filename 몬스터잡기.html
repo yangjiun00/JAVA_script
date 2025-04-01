@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사용자 정보 입력받고 출력하기</title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        let monsterHP = 100
+        const container = document.getElementById("container")
+        const h1 = document.createElement("h1")
+        h1.textContent = "몬스터 잡기 게임을 시작합니다"
+        container.appendChild(h1)
+
+        let attackdamage = parseInt(prompt("1회 공격 데미지는?"))
+        let attackcount = 0
+
+        if(attackdamage > 0){
+            while(monsterHP > 0){
+                monsterHP -= attackdamage
+                attackcount += 1
+
+                const p = document.createElement("p")
+                p.textContent = `몬스터를 ${attackcount}회 공격했습니다!`
+                container.append(p)
+
+                const strong = document.createElement("strong")
+                strong.textContent = `몬스터의 남은 HP는 ${monsterHP}입니다!`
+                container.append(strong)
+            }
+
+            const h2 = document.createElement("h2")
+            h2.textContent = "몬스터 잡기 완료! 수고하셨습니다."
+            h2.style.color = "orange"
+            h2.title = "게임을 다시 시작하려면 새로고침을 눌러주세요"
+            container.appendChild(h2)
+
+        }
+        else{
+            alert("데미지를 잘못 입력하였습니다")
+        }
+    </script>
+</body>
+</html>
